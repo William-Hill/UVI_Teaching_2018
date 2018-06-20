@@ -1,0 +1,33 @@
+INFO:root:GAME_ID: 683f8
+DEBUG:root:AI_hand: [Card(rank='6', suit='diamonds', value=7), Card(rank='7', suit='diamonds', value=8), Card(rank='9', suit='hearts', value=11), Card(rank='2', suit='spades', value=15), Card(rank='9', suit='spades', value=120)] 
+
+INFO:root:GAME_ID: b9137
+DEBUG:root:AI_hand: [Card(rank='3', suit='hearts', value=5), Card(rank='7', suit='clubs', value=7), Card(rank='8', suit='diamonds', value=9), Card(rank='10', suit='hearts', value=12), Card(rank='Queen', suit='hearts', value=14)] 
+
+INFO:root:GAME_ID: 8a19c
+DEBUG:root:AI_hand: [Card(rank='10', suit='diamonds', value=11), Card(rank='King', suit='diamonds', value=14), Card(rank='Queen', suit='hearts', value=14), Card(rank='4', suit='spades', value=45), Card(rank='8', suit='spades', value=105)] 
+
+INFO:root:GAME_ID: 97a9f
+DEBUG:root:AI_hand: [Card(rank='2', suit='diamonds', value=3), Card(rank='4', suit='diamonds', value=5), Card(rank='7', suit='clubs', value=7), Card(rank='Ace', suit='clubs', value=14), Card(rank='5', suit='spades', value=60)] 
+
+INFO:root:GAME_ID: 10906
+DEBUG:root:AI_hand: [Card(rank='3', suit='diamonds', value=4), Card(rank='5', suit='clubs', value=5), Card(rank='5', suit='hearts', value=7), Card(rank='10', suit='diamonds', value=11), Card(rank='Jack', suit='spades', value=150)] 
+
+INFO:root:GAME_ID: d83b4
+DEBUG:root:AI_hand: [Card(rank='5', suit='diamonds', value=6), Card(rank='8', suit='clubs', value=8), Card(rank='8', suit='hearts', value=10), Card(rank='Jack', suit='hearts', value=13), Card(rank='6', suit='spades', value=75)] 
+
+INFO:root:GAME_ID: 739a9
+DEBUG:root:AI_hand: [Card(rank='2', suit='diamonds', value=3), Card(rank='4', suit='hearts', value=6), Card(rank='5', suit='hearts', value=7), Card(rank='7', suit='diamonds', value=8), Card(rank='Ace', suit='clubs', value=14)] 
+
+INFO:root:GAME_ID: 09d9c
+DEBUG:root:AI_hand: [Card(rank='3', suit='diamonds', value=4), Card(rank='5', suit='clubs', value=5), Card(rank='6', suit='clubs', value=6), Card(rank='Jack', suit='diamonds', value=12), Card(rank='7', suit='spades', value=90)] 
+
+INFO:root:GAME_ID: 291a5
+DEBUG:root:AI_hand: [Card(rank='4', suit='diamonds', value=5), Card(rank='10', suit='clubs', value=10), Card(rank='Jack', suit='clubs', value=11), Card(rank='10', suit='diamonds', value=11), Card(rank='4', suit='spades', value=45)] 
+
+INFO:root:GAME_ID: fec1a
+DEBUG:root:AI_hand: [Card(rank='6', suit='diamonds', value=7), Card(rank='8', suit='hearts', value=10), Card(rank='Jack', suit='clubs', value=11), Card(rank='2', suit='spades', value=15), Card(rank='10', suit='spades', value=135)] 
+
+INFO:root:GAME_ID: 92f4f
+DEBUG:root:AI_hand: [Card(rank='4', suit='hearts', value=6), Card(rank='8', suit='hearts', value=10), Card(rank='King', suit='diamonds', value=14), Card(rank='4', suit='spades', value=45), Card(rank='8', suit='spades', value=105)] 
+
