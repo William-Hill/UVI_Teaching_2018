@@ -1,7 +1,8 @@
 import random
 import string
-#import pdb; pdb.set_trace()
-drakelyrics = ['godsplan.txt', 'backtoback.txt', 'hotlinebling.txt']
+
+#TODO: add a goodbye
+drakelyrics = ['godsplan.txt', 'backtoback.txt', 'hotlinebling.txt', 'inmyfeelings.txt']
 
 i_words = []
 my_words = []
@@ -12,13 +13,9 @@ bad_responses = ['', ' ', None]
 #TODO: use tensorflow to create a model to map words to each other
 
 def song_lyrics_parse():
-    #TODO: read in list of multiple songs: for l in drakelyrics
     for song in drakelyrics:
         f = open('drakelyrics/' + song, 'r')
-        #TODO: strip duplicate/repetitive lines
-        #TODO: strip punctuation
         #TODO: make it more "random"
-        #TODO: limit responses for empty lines
         for line in f:
             if '[' in line:
                 continue
@@ -40,6 +37,10 @@ def song_lyrics_parse():
                         break
         #print('i_words: {}\n, my_words: {}\n, remaining: {}\n'.format(i_words, my_words, remaining))
     f.close()
+
+def process_response(userinput, response_found = False):
+    pass
+
 def main():
 
     song_lyrics_parse()
@@ -47,6 +48,7 @@ def main():
     print("Hey! I'm Drake.")
 
     while True:
+        response_found = False
         userinput = input(">> ")
         if userinput in bad_responses:
             print("Are you still there?")
@@ -55,22 +57,24 @@ def main():
         userinput_l = userinput_l.split(' ')
         for u in userinput_l:
             if u.lower() in greetings:
+                response_found = True
                 print(random.choice(greetings))
                 break
 
             elif u.lower() in ['you', 'your', 'u']:
+                response_found = True
                 print(random.choice(i_words))
                 break
 
             elif u.lower() in ['you\'re', 'youre', 'ur']:
+                response_found = True
                 print(random.choice(my_words))
                 break
 
             else:
                 continue
-        #TODO: how do we make it so that once we get to the end of the user input string, we print a random choice?
-        #print(random.choice(remaining))
-        #break
+        if response_found is False:
+            print(random.choice(remaining))
 
 
 if __name__ == '__main__':
