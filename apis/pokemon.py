@@ -2,7 +2,9 @@ import requests
 import json
 
 # response = requests.get("http://pokeapi.co/api/v2/pokemon/charizard")
-response = requests.get("https://api.pokemontcg.io/v1/cards?name=pikachu&pageSize=2")
+pokemon_name = raw_input("What Pokemon do you want info about? ")
+response = requests.get("https://api.pokemontcg.io/v1/cards?name={}&pageSize=2".format(pokemon_name))
+#TODO: if response.text["cards"] is empty; return error message
 # text = response.json()
 text = response.text
 parsed = json.loads(text)
