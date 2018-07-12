@@ -1,4 +1,6 @@
 from fuzzywuzzy import fuzz
+import re
+import string
 import collections
 import gender_guesser.detector as gender
 vowels = ['o', 'i', 'y', 'e', 'a','u']
@@ -23,7 +25,47 @@ run name through consonant cipher
 
 def anti_vowel(s):
     result = re.sub(r'[AEIOU]', '', s, flags=re.IGNORECASE)
+    result = result.translate(None, string.punctuation)
     return result
+
+def translate_name(your_name, similar_name):
+    your_consonants = anti_vowel(your_name)
+    print "your_consonants:", your_consonants
+    similar_consonants = anti_vowel(similar_name)
+    print "similar_consonants:", similar_consonants
+
+    translation_table = string.maketrans(your_consonants, similar_consonants)
+    return string.translate(similar_name, translation_table)
+
+def get_masculine_name(your_name):
+    similar_name_score = 0
+    most_similar_name = None
+
+    for name in wakandan_masculine_names:
+        score = fuzz.ratio(your_name, name)
+        if score > similar_name_score:
+            similar_name_score = score
+            most_similar_name = name
+
+    print "similar_name_score", similar_name_score
+    print "most_similar_name", most_similar_name
+    return most_similar_name
+
+def get_feminine_name(your_name):
+    similar_name_score = 0
+    most_similar_name = None
+
+    for name in wakandan_feminine_names:
+        score = fuzz.ratio(your_name, name)
+        if score > similar_name_score:
+            similar_name_score = score
+            most_similar_name = name
+
+    print "similar_name_score", similar_name_score
+    print "most_similar_name", most_similar_name
+
+    return most_similar_name
+
 
 name_string = ''.join(wakandan_masculine_names)
 print "name_string:", name_string
@@ -33,14 +75,14 @@ print collections.Counter(consonant_string).most_common(3)
 
 
 your_name = raw_input("Enter your name: ").strip()
-similar_name_score = 0
-most_similar_name = None
+d = gender.Detector()
+gender = d.get_gender(your_name)
+if gender == "unknown":
+    gender = raw_input("Is your name masculine or feminine?")
 
-for name in wakandan_masculine_names:
-    score = fuzz.ratio(your_name, name)
-    if score > similar_name_score:
-        similar_name_score = score
-        most_similar_name = name
+if gender == "male":
+    similar_name = get_masculine_name(your_name)
+else:
+    similar_name = get_feminine_name(your_name)
 
-print "similar_name_score", similar_name_score
-print "most_similar_name", most_similar_name
+print "translated_name: ", translate_name(your_name, similar_name)
