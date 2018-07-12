@@ -14,7 +14,7 @@ bad_responses = ['', ' ', None]
 
 def song_lyrics_parse():
     for song in drakelyrics:
-        f = open('drakelyrics/' + song, 'r')
+        f = open('drakelyrics/clean_' + song, 'r')
         #TODO: make it more "random"
         for line in f:
             if '[' in line:
@@ -61,7 +61,7 @@ def main():
                 print(random.choice(greetings))
                 break
 
-            elif u.lower() in ['you', 'your', 'u']:
+            elif u.lower() in ['you', 'your', 'u', 'Drake']:
                 response_found = True
                 print(random.choice(i_words))
                 break

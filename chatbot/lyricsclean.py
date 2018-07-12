@@ -1,30 +1,42 @@
-drakelyrics = ['godsplan.txt', 'backtoback.txt', 'hotlinebling.txt', 'inmyfeelings.txt']
-#TODO: remove bad words if even a part of the word is found
-badwords = ['nigga', 'shit', 'damn', 'fuck', 'ass', 'pussy', 'bitch', 'bitches', 'niggas']
+import fileinput
+import string
 
-for song in drakelyrics:
-    f = open('drakelyrics/' + song, 'r')
-    for line in f:
-        if '[' in line:
-            continue
-        if line.strip('\n') in line_bank:
-            continue
-        line_l = line.translate(str.maketrans('','',string.punctuation))
-        line_l = line_l.split()
-        if len(line_l) > 0:
-            for l in line_l:
-                line_bank.append(line.strip('\n'))
-                if l.lower() in ['i', 'im']:
-                    i_words.append(line.strip('\n'))
-                    break
-                elif l.lower() in ['my', 'mine', 'me']:
-                    my_words.append(line.strip('\n'))
-                    break
-                else:
-                    remaining.append(line.strip('\n'))
-                    break
-    #print('i_words: {}\n, my_words: {}\n, remaining: {}\n'.format(i_words, my_words, remaining))
-f.close()
+drakelyrics = ['godsplan.txt', 'backtoback.txt', 'hotlinebling.txt','inmyfeelings.txt']
+
+badwords_dict = {
+    'nigga' : 'brotha',
+    'niggas' : 'brothas',
+    'shit'  : 'stuff',
+    'damn' : 'dang',
+    'fuck' : 'mess',
+    'fuckin' : 'messin',
+    'ass' : 'butt',
+    'pussy' : 'CENSORED',
+    'bitch' : 'chick',
+    'bitches' : 'chicks'
+}
+
+def main():
+    for song in drakelyrics:
+        f = open('drakelyrics/' + song, 'r+')
+        n = open('drakelyrics/clean_' + song, 'w+')
+        for line in f:
+            if '[' in line:
+                continue
+            line_l = line.split()
+            if len(line_l) > 0:
+                for i in range(len(line_l)):
+                    #TODO: how to preserve punctuation?
+                    stripped_word = line_l[i].translate(str.maketrans('','',string.punctuation))
+                    if stripped_word in badwords_dict.keys():
+                        word_new = badwords_dict[stripped_word]
+                        ###This is failing
+                        line_l[i] = stripped_word.replace(stripped_word, word_new)
+            line_n = ' '.join(line_l)
+            n.write(line_n)
+            n.write('\n')
+    f.close()
+    n.close()
 
 if __name__ == '__main__':
     main()
