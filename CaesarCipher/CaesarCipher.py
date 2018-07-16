@@ -75,12 +75,12 @@ def decrypt(string, key=-4):
 def main():
     choice = input("Enter 1 to encryption.  Enter 2 for decryption: ")
     if choice == "1":
-        string_to_encrypt = input("What string do you want to encrypt?")
+        string_to_encrypt = input("What string do you want to encrypt? ")
         #s = random.randint(1, 13)
         #print("s:", s)
         encrypt(string_to_encrypt)
     elif choice == "2":
-        string_to_decrypt = input("What string do you want to decrypt?")
+        string_to_decrypt = input("What string do you want to decrypt? ")
         #s = random.randint(1,13)
         # print("s:",s)
         decrypt(string_to_decrypt)
