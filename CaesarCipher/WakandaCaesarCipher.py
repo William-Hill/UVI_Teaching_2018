@@ -1,6 +1,8 @@
-# A Wakandian python program to show the basics of a caesar cipher
+''' A python program to show the basics of a caesar cipher'''
 import random
 
+#The chr() function (pronounced “char”, short for “character”) takes an integer ordinal and returns a single-character string
+#The ord() function (short for “ordinal”) takes a single-character string, and returns the integer ordinal value
 
 def encrypt(string, key=4):
     '''Encrypts a string'''
@@ -8,13 +10,24 @@ def encrypt(string, key=4):
     result = ""
     for character in string:
         if character.isalpha():
+            #Convert character to ASCII index
+            num = ord(character)
+            #add key to ASCII index
+            num += key
             # Encrypt uppercase characters
             if character.isupper():
-                result += chr((ord(character) + key - 65) % 26 + 65)
-
+                if num > ord('Z'):
+                    num -= 26
+                elif num < ord('A'):
+                    num += 26
+                result += chr(num)
             # Encrypt lowercase characters
             else:
-                result += chr((ord(character) + key - 97) % 26 + 97)
+                if num > ord('z'):
+                    num -= 26
+                elif num < ord('a'):
+                    num += 26
+                result += chr(num)
         else:
             result +=character
 
@@ -26,22 +39,34 @@ def encrypt(string, key=4):
 
 def decrypt(string, key=-4):
     '''decrypt a string'''
-
+    if key > 0:
+        key = -key
     result = ""
     for character in string:
         if character.isalpha():
+            #Convert character to ASCII index
+            num = ord(character)
+            #add key to ASCII index
+            num += key
             # Decrpypt uppercase characters
             if character.isupper():
-                result += chr((ord(character) + key - 65) % 26 + 65)
-
+                if num > ord('Z'):
+                    num -= 26
+                elif num < ord('A'):
+                    num += 26
+                result += chr(num)
             # Decrypt lowercase characters
             else:
-                result += chr((ord(character) + key - 97) % 26 + 97)
+                if num > ord('z'):
+                    num -= 26
+                elif num < ord('a'):
+                    num += 26
+                result += chr(num)
         else:
             result +=character
 
     print ("Cipher  : ", string)
-    print ("Shift : ", str(key))
+    print ("Key : ", str(key))
     print ("Text: ", result)
 
     return result
