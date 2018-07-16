@@ -28,6 +28,7 @@ def main():
                 for i in range(len(line_l)):
                     #TODO: how to preserve punctuation?
                     stripped_word = line_l[i].translate(str.maketrans('','',string.punctuation))
+                    stripped_word = stripped_word.lower()
                     if stripped_word in badwords_dict.keys():
                         word_new = badwords_dict[stripped_word]
                         ###This is failing

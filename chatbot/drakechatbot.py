@@ -8,6 +8,7 @@ i_words = []
 my_words = []
 remaining = []
 greetings = ['hello', 'hi', 'hey!' ,'hey', 'yo']
+goodbyes = ['bye', 'goodbye']
 line_bank = []
 bad_responses = ['', ' ', None]
 #TODO: use tensorflow to create a model to map words to each other
@@ -50,7 +51,7 @@ def main():
     while True:
         response_found = False
         userinput = input(">> ")
-        if userinput in bad_responses:
+        if userinput.strip() is '':
             print("Are you still there?")
             continue
         userinput_l = userinput.translate(str.maketrans('','',string.punctuation))
@@ -60,7 +61,10 @@ def main():
                 response_found = True
                 print(random.choice(greetings))
                 break
-
+            elif u.lower() in goodbyes:
+                response_found = True
+                print("I just hope that you miss me a little when I'm gone.")
+                return
             elif u.lower() in ['you', 'your', 'u', 'Drake']:
                 response_found = True
                 print(random.choice(i_words))
