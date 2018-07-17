@@ -19,10 +19,8 @@ class Block:
         and previous block's hash'''
 
         sha_hash = hashlib.sha256()
-        sha_hash.update(str(self.index) + str(self.timestamp) + str(self.data) + str(self.previous_hash))
+        sha_hash.update(str(self.index).encode('utf-8') + str(self.timestamp).encode('utf-8') + str(self.data).encode('utf-8') + str(self.previous_hash).encode('utf-8'))
         return sha_hash.hexdigest()
-
-
 
 
 def create_genesis_block():
@@ -46,8 +44,8 @@ def create_block_chain(num_of_blocks):
         block_chain.append(new_block)
         previous_block = new_block
 
-        print ("Block #{} was added to the blockchain".format(new_block.index))
-        print ("Hash: {}\n".format(new_block.hash))
+        print("Block #{} was added to the blockchain".format(new_block.index))
+        print("Hash: {}\n".format(new_block.hash))
 
 
 create_block_chain(10)
