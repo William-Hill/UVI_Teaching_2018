@@ -50,53 +50,13 @@ def translate_name(your_name, similar_name):
     return similar_name.translate(translation_table)
 
 def get_masculine_name(your_name):
-    similar_name_score = 0
-    most_similar_name = None
-
-    for name in wakandan_masculine_names:
-        score = fuzz.ratio(your_name, name)
-        if score > similar_name_score:
-            similar_name_score = score
-            most_similar_name = name
-
-    print("most_similar_name", most_similar_name)
-    return most_similar_name
+    pass
 
 def get_feminine_name(your_name):
-    similar_name_score = 0
-    most_similar_name = None
-
-    for name in wakandan_feminine_names:
-        score = fuzz.ratio(your_name, name)
-        if score > similar_name_score:
-            similar_name_score = score
-            most_similar_name = name
-
-    print("most_similar_name", most_similar_name)
-
-    return most_similar_name
+    pass
 
 def main():
-    your_name = input("Enter your name: ").strip()
-    d = gender_guesser.detector.Detector()
-    gender = d.get_gender(your_name)
-    print("gender:", gender)
-    if gender == "unknown" or gender == "andy":
-        gender = input("Is your name masculine or feminine? ")
-
-    while True:
-        if gender.lower() in ["male", "m", "masculine", "mostly_male"]:
-            similar_name = get_masculine_name(your_name)
-            break
-        elif gender.lower() in ["f", "female", "feminine", "mostly_female"]:
-            similar_name = get_feminine_name(your_name)
-            break
-        else:
-            print("Please pick a valid gender")
-
-    wakandan_name = translate_name(your_name, similar_name)
-    print("wakandan_name: ", wakandan_name)
-
+    pass
 
 if __name__ == '__main__':
     main()
